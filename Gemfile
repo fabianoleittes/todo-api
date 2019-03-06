@@ -39,6 +39,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
   gem 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.1'
+  gem 'pry-rails', '~> 0.3.9'
+  gem  'awesome_print'
 end
 
 group :development do
