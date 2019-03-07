@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/fda72ff60e3468ed28a4/maintainability)](https://codeclimate.com/github/fabianoleittes/todo-api/maintainability)
+
 # TODO API
 
 ## Getting Started
