@@ -1,4 +1,8 @@
 class TodosController < ApplicationController
+  def index
+    json_response(current_user.todos.all)
+  end
+
   def create
     @todo = current_user.todos.new(todo_params)
     if @todo.save

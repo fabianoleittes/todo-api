@@ -31,6 +31,34 @@ RSpec.describe "Todos API", type: :request do
     end
   end
 
+  describe "GET /todos" do
+    context "as an authorized user" do
+      before do
+        get(
+          "/todos",
+          params: {},
+          headers: headers
+        )
+      end
+
+      it "returns a response 200" do
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "as an unauthorized user" do
+      it "returns a 422 response" do
+        get(
+          "/todos",
+          params: {},
+          headers: {}
+        )
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
+
   def todo_params
     attributes_for(:todo, created_by: user)
   end
