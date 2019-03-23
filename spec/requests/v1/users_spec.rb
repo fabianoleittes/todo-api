@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Users API", type: :request do
-  describe "POST /signup" do
+  describe "POST /v1/signup" do
     context "with valid data" do
       before do
         post(
-          "/signup",
+          "/v1/signup",
           params: user_params.to_json,
           headers: { "Content-Type" => "application/json" }
         )
@@ -19,7 +19,7 @@ RSpec.describe "Users API", type: :request do
     context "with invalid data" do
       before do
         post(
-          "/signup",
+          "/v1/signup",
           params: {},
           headers: { "Content-Type" => "application/json" }
         )

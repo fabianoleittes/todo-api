@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Auth", type: :request do
-  describe "POST /auth/login" do
+  describe "POST /v1/auth/login" do
     context "when valid credentials" do
       before do
         post(
-          "/auth/login",
+          "/v1/auth/login",
           params: auth_params.to_json,
           headers: headers
         )
@@ -27,7 +27,7 @@ RSpec.describe "Auth", type: :request do
     context "when invalid credentials" do
       before do
         post(
-          "/auth/login",
+          "/v1/auth/login",
           params: {},
           headers: headers
         )

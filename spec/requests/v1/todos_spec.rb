@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Todos API", type: :request do
-  describe "POST /todos" do
+  describe "POST /v1/todos" do
     context "with valid data" do
       before do
         post(
-          "/todos",
+          "/v1/todos",
           params: todo.to_json,
           headers: headers
         )
@@ -19,7 +19,7 @@ RSpec.describe "Todos API", type: :request do
     context "with invalid data" do
       it "returns a 422 response" do
         post(
-          "/todos",
+          "/v1/todos",
           params: {},
           headers: headers
         )
@@ -28,11 +28,11 @@ RSpec.describe "Todos API", type: :request do
     end
   end
 
-  describe "GET /todos" do
+  describe "GET /v1/todos" do
     context "as an authorized user" do
       it "returns a response 200" do
         get(
-          "/todos",
+          "/v1/todos",
           params: {},
           headers: headers
         )
@@ -43,7 +43,7 @@ RSpec.describe "Todos API", type: :request do
     context "as an unauthorized user" do
       it "returns a 422 response" do
         get(
-          "/todos",
+          "/v1/todos",
           params: {},
           headers: {}
         )
@@ -53,11 +53,11 @@ RSpec.describe "Todos API", type: :request do
     end
   end
 
-  describe "GET /todos/:id" do
+  describe "GET /v1/todos/:id" do
     context "when the record exists" do
       it "returns a response 200" do
         get(
-          "/todos/#{todo.id}",
+          "/v1/todos/#{todo.id}",
           params: {},
           headers: headers
         )
@@ -66,7 +66,7 @@ RSpec.describe "Todos API", type: :request do
     end
 
     context "when the record does not exists" do
-      before { get "/todos/#{42}", params: {}, headers: headers }
+      before { get "/v1/todos/#{42}", params: {}, headers: headers }
 
       it "returns a response 404" do
         expect(response).to have_http_status(:not_found)
@@ -78,7 +78,7 @@ RSpec.describe "Todos API", type: :request do
     end
   end
 
-  describe "PATCH /todos/:id" do
+  describe "PATCH /v1/todos/:id" do
     context "with valid data" do
       it "updates the specified todo" do
         todo_params = {
@@ -88,7 +88,7 @@ RSpec.describe "Todos API", type: :request do
         }.to_json
 
         patch(
-          "/todos/#{todo.id}",
+          "/v1/todos/#{todo.id}",
           params: todo_params,
           headers: headers
         )
@@ -102,7 +102,7 @@ RSpec.describe "Todos API", type: :request do
 
       it "returns error code" do
         patch(
-          "/todos/#{todo.id}",
+          "/v1/todos/#{todo.id}",
           params: todo_params.to_json,
           headers: headers
         )
@@ -111,11 +111,11 @@ RSpec.describe "Todos API", type: :request do
     end
   end
 
-  describe "DELETE /todos/:id" do
+  describe "DELETE /v1/todos/:id" do
     context "when record not exists" do
       it "returns a response 404" do
         delete(
-          "/todos/42",
+          "/v1/todos/42",
           params: {},
           headers: headers
         )
@@ -126,7 +126,7 @@ RSpec.describe "Todos API", type: :request do
     context "when record exists" do
       it "returns a response 204" do
         delete(
-          "/todos/#{todo.id}",
+          "/v1/todos/#{todo.id}",
           params: {},
           headers: headers
         )
