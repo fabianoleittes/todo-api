@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :find_todo, only: [:show]
+  before_action :find_todo, only: [:show, :update, :destroy]
 
   def index
     json_response(current_user.todos.all)
@@ -18,6 +18,22 @@ class TodosController < ApplicationController
     end
   end
 
+  def update
+    if @todo.update(todo_params)
+      json_response(@todo)
+    else
+      json_response(@todo.errors, :unprocessable_entity)
+    end
+  end
+
+  def destroy
+    if @todo.destroy
+      render nothing: true, status: :no_content
+    else
+      json_response(@todo, :not_found)
+    end
+  end
+
   private
 
   def todo_params
@@ -25,6 +41,6 @@ class TodosController < ApplicationController
   end
 
   def find_todo
-    @todo = Todo.find(params[:id])
+    @todo ||= Todo.find(params[:id])
   end
 end
