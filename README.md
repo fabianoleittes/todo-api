@@ -41,13 +41,14 @@ What's in Version V1
 - [x] JWT Token Based Authentication
 - [x] Create users
 - [x] Create todos
-- [ ] Create items
-- [ ] API versioning
+- [x] Create items
+- [x] API versioning
 
 ## API Endpoints
-    $ POST /auth/login
-    $ POST /signup
-    $ POST /todos
+    $ POST /v1/auth/login
+    $ POST /v1/signup
+    $ POST /v1/todos
+    $ POST /v1/items
 
 ## To run testing
     $ bin/rspec
