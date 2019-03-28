@@ -44,11 +44,21 @@ What's in Version V1
 - [x] Create items
 - [x] API versioning
 
-## API Endpoints
-    $ POST /v1/auth/login
-    $ POST /v1/signup
-    $ POST /v1/todos
-    $ POST /v1/items
+
+URL / ENDPOINT    |    VERB    |    DESCRIPTION   
+----------------- | ---------- | -------------- 
+/v1/signup            |    POST    | Create user
+/v1/auth/login       |    POST    | Generate token      
+/v1/todos            |    POST     | Create todo
+/v1/todos |    GET     | Return all todos      
+/v1/todos/:id |    PUT     | Update todo
+/v1/todos/:id |    GET     | Show todo
+/v1/todos/:id |    PUT     | Destroy todo      
+/v1/todos/:id/items |   POST   | Create item
+/v1/todos/:id/items |    GET     | Return all items      
+/v1/todos/:id/items/:id |    PUT     | Update item
+/v1/todos/:id/items/:id |    GET     | Show item
+/v1/todos/:id/items/:id |    PUT     | Destroy item      
 
 ## To run testing
     $ bin/rspec
