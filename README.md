@@ -4,7 +4,8 @@
 
 ## Getting Started
 
-### Install dependencies
+### Option 1: Install dependencies
+
 After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
 
@@ -15,6 +16,14 @@ your machine with [this script].
 
 [this script]: https://github.com/thoughtbot/laptop
 
+### Option 2: Run Docker container
+After you have cloned this repo, install [Docker] and [Docker Compose], and then run:
+
+    $ docker-compose build
+    $ docker-compose up
+
+[Docker]: https://docs.docker.com/engine/installation/
+[Docker Compose]: https://docs.docker.com/compose/install/
 
 ### Heroku Setup
 After setting up, you can run the application using [Heroku Local]:
